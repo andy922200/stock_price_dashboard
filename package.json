@@ -7,6 +7,12 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "description": "An clean and simple dashboard to find your beloved stock price.",
+  "keywords": [
+    "google",
+    "extension"
+  ],
+  "author": "Andy Lien",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"

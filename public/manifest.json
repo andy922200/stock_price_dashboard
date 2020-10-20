@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Stock Price Dashboard",
+  "description": "An clean and simple dashboard to find your beloved stock price.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "stock-16.png",
+    "48": "stock-48.png",
+    "128": "stock-128.png"
+  },
+  "browser_action": {
+    "default_icon": "stock-128.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": []
+}
