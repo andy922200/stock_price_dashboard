@@ -12,11 +12,11 @@ img {
   display: block;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   font-family: $font-family-for-all-platforms !important;
+}
+
+#app {
+  width: 420px;
+  padding-top: 10px;
 }

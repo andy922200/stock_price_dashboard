@@ -1,0 +1,10 @@
+.navbar--custom{
+  display: flex;
+  justify-content: space-between !important;
+  label{
+    display:none;
+  }
+  .form-control--custom {
+    max-width: 200px;
+  }
+}

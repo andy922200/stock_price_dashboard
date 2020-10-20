@@ -7,14 +7,16 @@
         </div>
         <div class="priceInfo__detail fifty-width">
           <p>1013.45</p>
-          <b-icon
-            icon="arrow-up"
-            scale="1"
-            variant="success"
-            class="icon--custom"
-          ></b-icon>
-          <span>32.56 ( 11.23% )</span>
         </div>
+      </div>
+      <div class="card__footer">
+        <b-icon
+          icon="arrow-up"
+          scale="1"
+          variant="success"
+          class="icon--custom"
+        ></b-icon>
+        <span>1132.56 ( 111.2% )</span>
       </div>
     </b-card>
   </div>

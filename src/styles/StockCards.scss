@@ -1,40 +1,45 @@
 @import "variables";
 
 .StockCards{
+  .fifty-width {
+    width: 50%;
+  }
+
   .card--custom {
     margin: 15px 0px;
     padding: 12px;
     border: thick solid #32a1ce;
-
-    .fifty-width {
-      width: 50%;
+    .card__footer{
+      text-align: center;
+      font-size: 1.25*$default-font-size;
+      font-weight: 500;
     }
   }
 
   .priceInfo {
     display: flex;
     justify-content: space-between;
-  }
+    margin-bottom: 12px;
+    .priceInfo__Code {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-  .priceInfo__Code {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .priceInfo__Code--custom {
-      margin: 0px;
-      font-weight: bold;
-      font-size: 1.5*$default-font-size;
+      .priceInfo__Code--custom {
+        margin: 0px;
+        font-weight: bold;
+        font-size: 1.5*$default-font-size;
+      }
     }
-  }
+    .priceInfo__detail {
+      text-align: center;
+      font-size: 1.25*$default-font-size;
+      font-weight: 400;
 
-  .priceInfo__detail {
-    text-align: center;
-    font-size: 1.25*$default-font-size;
-    font-weight: 400;
-
-    p {
-      margin: 0px 0px 0.5rem 0px;
+      p {
+        margin: 0px;
+        font-size: 1.5*$default-font-size;
+      }
     }
   }
 }
