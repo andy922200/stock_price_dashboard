@@ -8,7 +8,7 @@
       placeholder="請輸入代碼"
     />
     <b-button variant="outline-info" class="my-2 my-sm-0" type="submit"
-      >搜尋</b-button
+      >新增</b-button
     >
   </b-navbar>
 </template>
