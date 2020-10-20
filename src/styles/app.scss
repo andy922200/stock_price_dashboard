@@ -1,0 +1,22 @@
+@import "variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $font-family-for-all-platforms !important;
+}

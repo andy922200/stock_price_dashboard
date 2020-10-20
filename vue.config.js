@@ -1,3 +1,3 @@
 module.exports = {
-  indexPath:"popup.html"
-}
+  indexPath: "popup.html"
+};

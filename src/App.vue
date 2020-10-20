@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <div class="container">
+      <StockCards />
+    </div>
   </div>
 </template>
 
 <script>
+import StockCards from "./components/StockCards.vue";
 
 export default {
-  name: "App"
+  name: "App",
+  components: { StockCards }
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss" src="./styles/app.scss"></style>
