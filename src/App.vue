@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-      <Navbar />
+      <Navbar @addSymbol="deliverSymbol" />
       <h4 class="date text-center">{{ time }}</h4>
-      <StockCards />
+      <StockCards :newAddedSymbol="newAddedSymbol" />
     </div>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   components: { StockCards, Navbar },
   data() {
     return {
-      time: "1990 Jan 01 00:00:00"
+      time: "1990 Jan 01 00:00:00",
+      newAddedSymbol: ""
     };
   },
   created() {
@@ -31,8 +32,11 @@ export default {
       dayjs.extend(utc);
       dayjs.extend(timezone);
       this.time = dayjs()
-        .tz("America/New_York")
+        .tz("Asia/Taipei")
         .format("YYYY MMM DD ddd");
+    },
+    deliverSymbol(symbol) {
+      this.newAddedSymbol = symbol;
     }
   }
 };

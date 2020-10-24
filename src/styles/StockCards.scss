@@ -9,6 +9,7 @@
     margin: 15px 0px;
     padding: 12px;
     border: thick solid #32a1ce;
+    position: relative;
     .card__footer{
       text-align: center;
       font-size: 1.25*$default-font-size;
@@ -40,6 +41,27 @@
         margin: 0px;
         font-size: 1.5*$default-font-size;
       }
+    }
+  }
+
+  .card__popup{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    width:50px;
+    height:50px;
+    z-index: 10;
+    &:hover{
+      display:block;
+      border-radius: 2px;
+      background-color:red;
+    }
+    .iconX:after{
+      content:"X";
+      color:white;
+      position:absolute;
+      top:12.5px;
+      left:20px;
     }
   }
 }
