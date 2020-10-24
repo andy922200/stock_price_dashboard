@@ -96,7 +96,7 @@ export default {
     };
   },
   created() {
-    // this.getStocksData();
+    this.getStocksData();
   },
   methods: {
     async getStocksData() {
