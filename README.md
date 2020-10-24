@@ -22,13 +22,13 @@
 
 ## How to use
 
-**Website 網站**
+**Content內容**
 
-<p>Please click the icon, and the requested data will show after a few moments. You can also add your favorite stock symbols .</p>
+<p>Please click the icon, and the requested data will show after a few moments. You can also add your favorite stock symbols.</p>
 <p>簡單的點一下按鈕，右上角的彈出視窗就會出現資料了。最多可以顯示五筆資料。</p>
-<!-- <p align="center">
-    <img src="./demo.gif" alt="Website Demo">
-</p> -->
+<p align="center">
+  <img src="./public/Demo.png" alt="Demo">
+</p>
 
 ## Author
 
