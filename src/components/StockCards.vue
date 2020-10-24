@@ -1,33 +1,38 @@
 <template>
   <div class="StockCards">
-    <h5 class="text-center">最後更新於：{{ dataTime }}</h5>
-    <b-card
-      no-body
-      class="card--custom"
-      v-for="(stock, index) in stocks"
-      :key="stock.symbol + index"
-    >
-      <div class="priceInfo bg-white text-black">
-        <div class="priceInfo__Code fifty-width">
-          <p class="priceInfo__Code--custom">{{ stock.symbol }}</p>
+    <div class="text-center" v-if="fetchingData">
+      <b-spinner variant="primary" label="Spinning"></b-spinner>
+    </div>
+    <template v-else>
+      <h5 class="text-center">最後更新於：{{ dataTime }}</h5>
+      <b-card
+        no-body
+        class="card--custom"
+        v-for="(stock, index) in stocks"
+        :key="stock.symbol + index"
+      >
+        <div class="priceInfo bg-white text-black">
+          <div class="priceInfo__Code fifty-width">
+            <p class="priceInfo__Code--custom">{{ stock.symbol }}</p>
+          </div>
+          <div class="priceInfo__detail fifty-width">
+            <p>{{ stock.close }}</p>
+          </div>
         </div>
-        <div class="priceInfo__detail fifty-width">
-          <p>{{ stock.close }}</p>
+        <div class="card__footer">
+          <b-icon
+            :icon="stock.typeIcon"
+            scale="1"
+            :variant="stock.typeColor"
+            class="icon--custom"
+          ></b-icon>
+          <span>{{ stock.change }} ( {{ stock.changePercent }} )</span>
         </div>
-      </div>
-      <div class="card__footer">
-        <b-icon
-          :icon="stock.typeIcon"
-          scale="1"
-          :variant="stock.typeColor"
-          class="icon--custom"
-        ></b-icon>
-        <span>{{ stock.change }} ( {{ stock.changePercent }})</span>
-      </div>
-      <div class="card__popup" @click="deleteSymbol(index)">
-        <div class="iconX"></div>
-      </div>
-    </b-card>
+        <div class="card__popup" @click="deleteSymbol(index)">
+          <div class="iconX"></div>
+        </div>
+      </b-card>
+    </template>
   </div>
 </template>
 
@@ -46,6 +51,7 @@ export default {
   data() {
     return {
       dataTime: "1990 Jan 01",
+      fetchingData: false,
       stocks: [
         {
           symbol: "AAPL",
@@ -60,8 +66,10 @@ export default {
     };
   },
   async created() {
+    this.fetchingData = true;
     await this.syncWithSavedData("get");
     await this.getStocksData();
+    this.fetchingData = false;
   },
   methods: {
     async syncWithSavedData(type) {
