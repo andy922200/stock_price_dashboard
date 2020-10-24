@@ -55,50 +55,36 @@ export default {
           change: "0.0",
           changePercent: "+1.05%",
           updatedTime: "1990 Jan 01"
-        },
-        {
-          symbol: "GOOG",
-          typeIcon: "arrow-down",
-          typeColor: "danger",
-          close: "0.0",
-          change: "0.0",
-          changePercent: "-2.01%",
-          updatedTime: "1990 Jan 01"
-        },
-        {
-          symbol: "FB",
-          typeIcon: "arrow-down",
-          typeColor: "danger",
-          close: "0.0",
-          change: "0.0",
-          changePercent: "-5.01%",
-          updatedTime: "1990 Jan 01"
-        },
-        {
-          symbol: "TSLA",
-          typeIcon: "arrow-up",
-          typeColor: "success",
-          close: "0.0",
-          change: "0.0",
-          changePercent: "+15.01%",
-          updatedTime: "1990 Jan 01"
-        },
-        {
-          symbol: "VTI",
-          typeIcon: "arrow-up",
-          typeColor: "success",
-          close: "0.0",
-          change: "0.0",
-          changePercent: "+15.01%",
-          updatedTime: "1990 Jan 01"
         }
       ]
     };
   },
-  created() {
-    this.getStocksData();
+  async created() {
+    await this.syncWithSavedData("get");
+    await this.getStocksData();
   },
   methods: {
+    async syncWithSavedData(type) {
+      try {
+        switch (type) {
+          case "get": {
+            let data = localStorage.getItem("stocks");
+            if (data) {
+              this.stocks = [...JSON.parse(data)];
+              this.dataTime = this.stocks[0].updatedTime;
+            }
+            break;
+          }
+          case "set":
+            localStorage.setItem("stocks", JSON.stringify(this.stocks));
+            break;
+          default:
+            break;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    },
     async getStocksData() {
       try {
         let symbolGroups = _.chunk(
@@ -125,6 +111,7 @@ export default {
         }
 
         result.sort((a, b) => (a.symbol > b.symbol ? 1 : -1));
+        await this.syncWithSavedData("set");
 
         this.stocks = result;
       } catch (err) {
@@ -172,8 +159,13 @@ export default {
         console.log(err);
       }
     },
-    deleteSymbol(index) {
-      this.stocks.splice(index, 1);
+    async deleteSymbol(index) {
+      try {
+        this.stocks.splice(index, 1);
+        await this.syncWithSavedData("set");
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
   watch: {
@@ -187,6 +179,7 @@ export default {
           let { data: rawData } = await stocksAPI.getStocks(newVal);
           let formattedData = await this.formatStocksData(rawData);
           this.stocks.push(formattedData);
+          await this.syncWithSavedData("set");
         }
       }
     }
