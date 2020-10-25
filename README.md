@@ -6,7 +6,7 @@
 
 <h4 align="center"> Stock Price Dashboard - Google 擴充套件 </h3>
 <h5 align="center"> Stock Price Dashboard - Google Extension</h3>
-<a target="_blank" href="#">
+<a target="_blank" href="https://chrome.google.com/webstore/detail/stock-price-dashboard/cjdffknkkobgdnbdpklcnahpcjdpldoo">
   <p align="center">Click here to download page</p>
 </a>
 
